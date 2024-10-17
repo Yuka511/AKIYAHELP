@@ -9,7 +9,7 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @user = @Post.user
+    @user = @post.user
   end
 
   def create
