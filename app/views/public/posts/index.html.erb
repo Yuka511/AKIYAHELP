@@ -6,7 +6,9 @@
       <h1>みんなの投稿（仮）</h1>
       <% @posts.each do |post| %>
         <div>
-          <%= image_tag post.get_image %>
+          <%= link_to post_path(post.id) do %>
+            <%= image_tag post.get_image %>
+          <% end %>
           <p>
             <%= image_tag post_image.user.get_profile_image(100,100), class: "mt-3 rounded-circle"; %> <!-- 投稿ユーザー画像 -->
             <%= post.user.name %> <!-- ユーザーネーム -->
