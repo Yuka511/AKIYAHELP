@@ -28,7 +28,7 @@ class Public::SessionsController < Devise::SessionsController
   before_action :configure_permitted_parameters, if: :devise_controller?
   
   def after_sign_in_path_for(resource)
-    mypage_path(current_user) # ログイン直後は、ユーザーの詳細ページ(マイページ)へ遷移
+    mypage_path # ログイン直後は、ユーザーの詳細ページ(マイページ)へ遷移
   end
   
   def after_sign_out_path_for(resource)

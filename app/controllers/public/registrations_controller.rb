@@ -52,7 +52,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    mypage_path(current_user) # ユーザー登録直後は、ユーザーの詳細ページ(マイページ)へ遷移
+    mypage_path # ユーザー登録直後は、ユーザーの詳細ページ(マイページ)へ遷移
   end
 
   # The path used after sign up for inactive accounts.

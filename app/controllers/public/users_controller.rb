@@ -1,7 +1,7 @@
 class Public::UsersController < ApplicationController
   def mypage
     @user = current_user
-    @posts = @user.posts
+    @posts = @user.posts.order(id: :desc) #ログインユーザーのpostを降順(新着順)に取得
   end
 
   def edit
@@ -10,7 +10,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts
+    @posts = @user.posts.order(id: :desc) #指定のuserのpostを降順(新着順)に取得
   end
 
   def update

@@ -4,7 +4,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.order('id DESC') #postを降順(新着順)に取得
   end
 
   def show

@@ -2,7 +2,7 @@
   <div class = "row justify-content-center">
     <div class = "col-2">
     </div>
-    <div class = "col-8 text-center">
+    <div class = "col-8">
       <!-- ユーザーの詳細 -->
       <div>
         <h3><%= @user.name %></h3>
@@ -13,28 +13,7 @@
       </div>
       
       <!-- ユーザーの投稿一覧 -->
-      
-      <% @posts.each do |post| %>
-          <div class="row">
-              <div class="col-12 mb-3">
-                <%= link_to post_path(post.id) do %>
-                  <div class="card">
-                      <div>
-                        <p>
-                          <%= image_tag post.user.get_profile_image(100,100), class: "mt-3 rounded-circle"; %> <!-- 投稿ユーザー画像 -->
-                          <%= post.user.name %> <!-- ユーザーネーム -->
-                        </p>
-                        <p>タイトル：<%= post.title %></p>
-                        <p>内容：<%= post.body %></p>
-                        <% if post.image.attached? %> <!-- 画像の添付があった場合のみ、画像を表示させる。画像添付がない場合、何も返さない。 -->
-                            <%= image_tag post.get_image, size: "300x300" %>
-                        <% end %>
-                      </div>
-                  </div>
-                <% end %>
-              </div>
-          </div>
-      <% end %>
+      <%= render 'public/posts/post', posts: @posts %>
     </div>
     <div class = "col-2">
     </div>
