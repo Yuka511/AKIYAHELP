@@ -22,13 +22,15 @@
                     <hr> <!-- 区切りの横線 -->
                     <p style="color: black;">　<%= @post.body %></p>
                     <% if @post.image.attached? %> <!-- 画像の添付があった場合のみ、画像を表示させる。画像添付がない場合、何も返さない。 -->
+                        <%= link_to @post.get_image, target: "_blank" do %>
                         　<%= image_tag @post.get_image, size: "300x300" %>
+                        <% end %>
                     <% end %>
                     <hr> <!-- 区切りの横線 -->
                     <div style="display: flex; justify-content: space-between;">
                       <span style="color: gray; text-align: left; margin-left: 20px;"><%= @post.created_at.strftime('%Y/%m/%d') %></span>
-                      <span style="color: gray; text-align: center; flex: 1;"><i class="fa-regular fa-comment"></i>コメント</span>
-                      <span style="color: gray; text-align: right; margin-right: 20px;"><i class="fa-solid fa-heart"></i>いいね</span>
+                      <span style="color: gray; text-align: center; flex: 1;"><i class="fa-regular fa-comment"></i>コメント数：</span>
+                      <span style="color: gray; text-align: right; margin-right: 20px;"><i class="fa-solid fa-heart"></i>いいね数：</span>
                     </div>
                   </div>
               </div>
