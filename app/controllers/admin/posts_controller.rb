@@ -7,7 +7,7 @@ class Admin::PostsController < ApplicationController
   end
   
   def index
-    @posts = Post.includes(:user).order('id DESC') # 投稿を新着順に取得し、関連するユーザー情報も同時に取得
+    @posts = Post.order('id DESC') #postを降順(新着順)に取得
   end
   
 end
