@@ -1,22 +1,29 @@
+<br>
 <% posts.each do |post| %>
     <div class="row">
         <div class="col-12 mb-3">
           
             <div class="card">
-              <%= link_to post_path(post.id) do %>
                 <div>
                   <p style="color: black;">
-                    　<%= image_tag post.user.get_profile_image(50,50), class: "mt-3 rounded-circle"; %> <!-- 投稿ユーザー画像 -->
+                    <span style="display: inline-block;"><!-- blockして横並びにする -->
+                      <%= link_to(post.user) do %>
+                      　<%= image_tag post.user.get_profile_image(50,50), class: "mt-3 rounded-circle"; %> <!-- 投稿ユーザー画像 -->
+                      <% end %>
+                    </span>
+                    <span style="display: inline-block;"><!-- blockして横並びにする -->
                     　<%= post.user.name %> <!-- ユーザーネーム -->
+                    </span>
                   </p>
-                  <hr> <!-- 区切りの横線 -->
-                  <h5 style="font-weight: bold; color: black;">　<%= post.title %></h5>
-                  <hr> <!-- 区切りの横線 -->
-                  <p style="color: black;">　<%= post.body %></p>
-                  <% if post.image.attached? %> <!-- 画像の添付があった場合のみ、画像を表示させる。画像添付がない場合、何も返さない。 -->
-                        　<%= image_tag post.get_image, size: "300x300" %>
+                  <%= link_to post_path(post.id) do %> <!-- post/showへのリンク -->
+                    <hr> <!-- 区切りの横線 -->
+                    <h5 style="font-weight: bold; color: black;">　<%= post.title %></h5>
+                    <hr> <!-- 区切りの横線 -->
+                    <p style="color: black;">　<%= post.body %></p>
+                    <% if post.image.attached? %> <!-- 画像の添付があった場合のみ、画像を表示させる。画像添付がない場合、何も返さない。 -->
+                          　<%= image_tag post.get_image, size: "300x300" %>
+                    <% end %>
                   <% end %>
-              <% end %>
                   <hr> <!-- 区切りの横線 -->
                   <div style="display: flex; justify-content: space-between;">
                     <span style="color: gray; text-align: left; margin-left: 20px;"><%= post.created_at.strftime('%Y/%m/%d') %></span>

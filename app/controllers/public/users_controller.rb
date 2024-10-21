@@ -11,6 +11,12 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.order(id: :desc) #指定のuserのpostを降順(新着順)に取得
+
+    if @user == current_user
+      redirect_to mypage_path
+    else
+      render 'show'
+    end
   end
 
   def update
@@ -24,7 +30,7 @@ class Public::UsersController < ApplicationController
     @user.destroy
     redirect_to root_path
   end
-  
+
   #ストロングパラメータ
   private
 

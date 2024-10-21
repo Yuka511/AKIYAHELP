@@ -3,14 +3,30 @@
     <div class = "col-2">
     </div>
     <div class = "col-8">
-      <h2>プロフィール編集</h2>
-      <%= form_with model: @user do |f| %>
-        <label for="inputName">Name</label>
-        <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%>
-        <label for="inputImage">ProfileImage</label>
-        <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>  
-        <%= f.submit "変更を保存" %>
-      <% end %>
+      
+      <div style="background-color: lightgray; border: 3px solid black; padding: 10px;">
+        <div style="display: inline-block; margin-right: 20px; margin-left: 20px; margin-bottom: 20px;"> <!-- blockして横並びにする/ボーダーライン間に余白を追加 -->
+          <h2 style="font-weight: bold;">プロフィール編集</h2>
+        </div>
+        <%= form_with model: @user, local: true do |f| %>
+          <div style="margin-left: 20px; margin-right: 20px;">
+            <label for="inputImage">プロフィール画像<strong>（※正方形の画像を選択してください）</stoong></label><br> <!-- 画像ラベルを改行表示 -->
+            <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %><br><br> <!-- 画像ファイル選択と改行 -->
+          </div>
+          <div style="margin-left: 20px; margin-right: 20px;">
+            <label for="inputName">名前</label><br> <!-- 名前ラベルを改行表示 -->
+            <%= f.text_field :name, autofocus: true, id: "inputName", placeholder: "名前" %><br><br> <!-- 名前入力欄と改行 -->
+          </div>
+          <div style="margin-left: 20px; margin-right: 20px;">
+            <label for="introduction">自己紹介</label><br> <!-- 自己紹介ラベルを改行表示 -->
+            <%= f.text_area :introduction, class: "form-control introduction", placeholder: "自己紹介" %><br><br> <!-- 自己紹介入力欄と改行 -->
+          </div>
+          <div style="margin-left: 20px; margin-right: 20px; text-align: right;">
+            <%= f.submit "変更を保存", class: "btn btn-primary" %><br> <!-- 保存ボタンをボタンスタイルに変更して改行 -->
+          </div>
+        <% end %>
+      </div>
+      
     </div>
     <div class = "col-2">
     </div>
