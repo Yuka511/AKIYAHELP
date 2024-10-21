@@ -35,6 +35,12 @@ class Public::SessionsController < Devise::SessionsController
     root_path # ログアウト直後は、トップページへ遷移
   end
   
+  def guest_sign_in #ゲストログイン機能
+    user = User.guest
+    sign_in user
+    redirect_to user_path(user), notice: "ゲストでログインしました。"
+  end
+  
   protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])

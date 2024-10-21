@@ -1,4 +1,7 @@
 class Public::UsersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :ensure_guest_user, only: [:edit]
+  
   def mypage
     @user = current_user
     @posts = @user.posts.order(id: :desc) #ログインユーザーのpostを降順(新着順)に取得
@@ -37,4 +40,12 @@ class Public::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :name_kana, :introduction, :profile_image)
   end
+  
+  def ensure_guest_user
+    @user = User.find(params[:id])
+    if @user.guest_user?
+      redirect_to user_path(current_user) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
+    end
+  end  
+
 end

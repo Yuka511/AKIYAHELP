@@ -1,6 +1,8 @@
 class Public::PostsController < ApplicationController
+  before_action :authenticate_user!
+  
   def new
-    @post = Post.new
+    @post = current_user.posts.build #ユーザーが新しい投稿を作成する際に、その投稿に自動的にユーザー情報が関連付けられる（@post = Post.newにユーザー情報の紐づけ）
   end
 
   def index

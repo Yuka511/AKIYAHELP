@@ -23,6 +23,11 @@
     </div>
     <div class = "col-8">
       <%= render 'public/posts/post', posts: @posts %>
+      <div>
+        <% unless user_signed_in? %>
+          他のPOSTを閲覧するには、<%= link_to "<u>ログイン</u>".html_safe, new_user_session_path %>してください。
+        <% end %>
+      </div>
     </div>
     <div class = "col-2">
     </div>

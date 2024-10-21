@@ -2,36 +2,27 @@
 <% if admin_signed_in? %>
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class = "container">
-      <a class="navbar-brand" href="/"><%= image_tag '空き家HELP.png', size: "auto" %></a> <!--ロゴ -->
+      <a class="navbar-brand" href="/"><%= image_tag '空き家HELP.png', size: "150x65" %></a> <!--ロゴ -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      <span style="color: gray; text-align: center;"><strong>【管理者ログイン中】</strong></span>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
           <% if admin_signed_in? %> <!--管理者がログインした場合 -->
             <li class="nav-item"> <!-- 会員一覧 -->
-              <%= link_to '会員一覧',admin_path %>
+              <span style="border: 2px solid black; border-radius: 50px; padding: 5px;"><%= link_to '会員一覧',admin_path %>
             </li>
-            <li class="nav-item"> <!-- すべてのユーザーの投稿一覧 -->
-              <%= link_to 'みんなのPOST', posts_path %>
-            </li>
+            　
+            <!--<li class="nav-item"> <!-- すべてのユーザーの投稿一覧 -->
+            <!--  <span style="border: 2px solid black; border-radius: 50px; padding: 5px;"><!%= link_to 'みんなのPOST', posts_path %>-->
+            <!--</li>-->
+
             <li class="nav-item"> <!-- ログアウト -->
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+              <span style="border: 2px solid black; border-radius: 50px; padding: 5px;"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
             </li>
-          <% else %>　<!--管理者がログアウトした場合 -->
-            <li class="nav-item"> <!-- about -->
-              <%= link_to 'About', about_path %>
-            </li>
-            <li class="nav-item"> <!-- 新規会員登録 -->
-              <%= link_to '新規登録', new_user_registration_path %>
-            </li>
-            <li class="nav-item"> <!-- ゲストログイン -->
-              ゲストログイン
-            </li>
-            <li class="nav-item"> <!-- ログイン -->
-              <%= link_to "ログイン", new_user_session_path %>
-            </li>
+          <!--管理者がログアウトした場合、ユーザーログアウト時と同じ -->
           <% end %>
         </ul>
       </div>
@@ -50,32 +41,39 @@
         <ul class="navbar-nav ml-auto">
           <% if user_signed_in? %> <!--ユーザーがログインした場合 -->
             <li class="nav-item"> <!-- about -->
-              <%= link_to 'About', about_path %>
+              <span style="border: 2px solid black; border-radius: 50px; padding: 5px;"><%= link_to 'About', about_path %>
             </li>
+            　
             <li class="nav-item"> <!-- マイページ -->
-              <%= link_to 'マイページ', mypage_path %>
+              <span style="border: 2px solid black; border-radius: 50px; padding: 5px;"><%= link_to 'マイページ', mypage_path %>
             </li>
+            　
             <li class="nav-item"> <!-- すべてのユーザーの投稿一覧 -->
-              <%= link_to 'みんなの投稿', posts_path %>
+              <span style="border: 2px solid black; border-radius: 50px; padding: 5px;"><%= link_to 'みんなの投稿', posts_path %>
             </li>
+            　
             <li class="nav-item"> <!-- 新規投稿post -->
-              <%= link_to '新規投稿', new_post_path %>
+              <span style="border: 2px solid black; border-radius: 50px; padding: 5px;"><%= link_to '新規投稿', new_post_path %>
             </li>
+            　
             <li class="nav-item"> <!-- ログアウト -->
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+              <span style="border: 2px solid black; border-radius: 50px; padding: 5px;"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
             </li>
           <% else %>　<!--ユーザーがログアウトした場合 -->
             <li class="nav-item"> <!-- about -->
-              <%= link_to 'About', about_path %>
+              <span style="border: 2px solid black; border-radius: 50px; padding: 5px;"><%= link_to 'About', about_path %>
             </li>
+            　
             <li class="nav-item"> <!-- 新規会員登録 -->
-              <%= link_to '新規登録', new_user_registration_path %>
+              <span style="border: 2px solid black; border-radius: 50px; padding: 5px;"><%= link_to '会員登録', new_user_registration_path %>
             </li>
+            　
             <li class="nav-item"> <!-- ゲストログイン -->
-               ゲストログイン
+               <span style="border: 2px solid black; border-radius: 50px; padding: 5px;"><%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post %>
             </li>
+            　
             <li class="nav-item"> <!-- ログイン -->
-              <%= link_to "ログイン", new_user_session_path %>
+              <span style="border: 2px solid black; border-radius: 50px; padding: 5px;"><%= link_to "ログイン", new_user_session_path %>
             </li>
           <% end %>
         </ul>

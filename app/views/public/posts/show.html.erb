@@ -3,20 +3,28 @@
     <div class = "col-2">
     </div>
     <div class = "col-8", style="max-width: 80%; margin: 0 auto; text-align: left;">
-      <h3>
-        <%= link_to(@post.user) do %>
-          <%= image_tag @user.get_profile_image(100,100) %> <!-- 投稿ユーザー画像 -->
-        <% end %>
-          <%= @post.user.name %> <!-- ユーザーネーム -->のPOST（仮）
-      </h3>
+
       <div class="row">
           <div class="col-12 mb-3">
+
               <div class="card">
                   <div>
-                    <p style="color: black;">
-                      　<%= image_tag @post.user.get_profile_image(50,50), class: "mt-3 rounded-circle"; %> <!-- 投稿ユーザー画像 -->
-                      　<%= @post.user.name %> <!-- ユーザーネーム -->
-                    </p>
+                    <div style="color: black; display: flex; justify-content: space-between; align-items: center;">
+                      <div>
+                        <%= link_to(@post.user) do %>
+                        　<%= image_tag @post.user.get_profile_image(50, 50), class: "mt-3 rounded-circle" %> <!-- 投稿ユーザー画像 -->
+                        <% end %>
+                        　<%= @post.user.name %> <!-- ユーザーネーム -->
+                      </div>
+                      <% if @user == current_user %>
+                        <div style="float: right; margin-right: 20px;">
+                          <%= link_to edit_post_path(@post), class: "btn btn-outline-secondary btn-block" do %>
+                            <i class="fa-regular fa-pen-to-square"></i> <!-- 編集ボタン -->
+                          <% end %>
+                        </div>
+                      <% end %>
+                    </div>
+                    
                     <hr> <!-- 区切りの横線 -->
                     <h5 style="font-weight: bold; color: black;">　<%= @post.title %></h5>
                     <hr> <!-- 区切りの横線 -->
@@ -34,18 +42,16 @@
                     </div>
                   </div>
               </div>
-              <div class="row">
-                  <div class="col-12 mb-3">
-                    <br>
-                    <br>
-                    <div>
-                      <i class="fa-regular fa-comment"></i>コメント
-                    </div>
-                      <div class="card">
-                        a
-                      </div>
-                  </div>
+
+              <br>
+              <br>
+              <div>
+                <i class="fa-regular fa-comment"></i>コメント
               </div>
+                  <div class="card">
+                    a<!--要編集-->
+                  </div>
+
           </div>
       </div>
     </div>

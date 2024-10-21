@@ -22,7 +22,8 @@
             <%= f.text_area :introduction, class: "form-control introduction", placeholder: "自己紹介" %><br><br> <!-- 自己紹介入力欄と改行 -->
           </div>
           <div style="margin-left: 20px; margin-right: 20px; text-align: right;">
-            <%= f.submit "変更を保存", class: "btn btn-primary" %><br> <!-- 保存ボタンをボタンスタイルに変更して改行 -->
+            <%= f.submit "変更を保存", class: "btn btn-primary" %>　
+            <%= link_to 'アカウントを削除', @user, method: :delete, data: { confirm: 'アカウントを削除するとデータが完全に削除され、元に戻すことはできません。本当に削除しますか？' }, class: "btn btn-danger", style: "font-weight: bold" %>
           </div>
         <% end %>
       </div>
