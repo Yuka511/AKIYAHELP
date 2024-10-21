@@ -1,5 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!
+  before_action :is_matching_login_user, only: [:edit, :update]
   
   def new
     @post = current_user.posts.build #ユーザーが新しい投稿を作成する際に、その投稿に自動的にユーザー情報が関連付けられる（@post = Post.newにユーザー情報の紐づけ）
@@ -42,6 +43,14 @@ class Public::PostsController < ApplicationController
   
   def post_params
     params.require(:post).permit(:title, :body, :image)
+  end
+  
+  def is_matching_login_user
+    post = Post.find(params[:id])
+    user = post.user
+    unless user.id == current_user.id
+      redirect_to posts_path
+    end 
   end
   
 end
