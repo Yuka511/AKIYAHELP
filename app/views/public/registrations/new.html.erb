@@ -1,29 +1,70 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "publics/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class = "container">
+  <div class = "row">
+    <div class = "col-2">
+    </div>
+    <div class = "col-8">
+      
+      <h2>新規会員登録 <i class="fa-solid fa-user-plus"></i></h2>
+      
+      <div class="card">
+        <%= form_with model: @user, url: user_registration_path do |f| %>
+        
+          <div class="field">
+            名前<br>
+            <%= f.text_field :name %>
+          </div>
+          
+          <div class="field">
+            名前（フリガナ）<br>
+            <%= f.text_field :name_kana %>
+          </div>
+        
+          <div class="field">
+            メールアドレス<br>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@mail.com" %>
+          </div>
+        
+          <div class="field">
+            パスワード<strong>（6字以上）</strong><br>
+            <%= f.password_field :password, autocomplete: "new-password", placeholder: "xxxxxx" %>
+          </div>
+        
+          <div class="field">
+            パスワード<strong>（確認用）</strong><br>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "xxxxxx" %>
+          </div>
+        
+          <div class="actions">
+            <br>
+            <%= f.submit "　新規登録　" %>
+          </div>
+        <% end %>
+        
+        <div>
+          <br>
+          ※既にアカウント登録している場合は、<%= link_to "<u>こちら</u>".html_safe, new_user_session_path %>
+        </div>
+      </div>
+      
+    </div>
+    <div class = "col-2">
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+</div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+<style>
+  a {
+    text-decoration: none;
+    color: black; /* リンク特有の青文字もデフォルトの色に戻すために追加 */
+  }
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "public/shared/links" %>
+  a:hover {
+    text-decoration: none; /* カーソルを合わせた際に下線を消す */
+  }
+  
+  .card {
+    border: 2px solid black; /* 太い線を設定 */
+    padding: 10px; /* カード内の余白を調整 */
+  }
+</style>

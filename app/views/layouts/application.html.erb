@@ -2,15 +2,35 @@
 <html>
   <head>
     <title>AKIYAHELP</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/2a91f0927f.js" crossorigin="anonymous"></script>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <%= render 'layouts/header' %>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
+    <footer>
+      <%= render 'layouts/footer' %>
+    </footer>
   </body>
 </html>
+
+<style>
+  a {
+    text-decoration: none;
+    color: black; /* リンク特有の青文字もデフォルトの色に戻すために追加 */
+  }
+
+  a:hover {
+    text-decoration: none; /* カーソルを合わせた際に下線を消す */
+  }
+</style>

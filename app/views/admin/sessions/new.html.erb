@@ -1,26 +1,50 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class = "container">
+  <div class = "row">
+    <div class = "col-2">
     </div>
-  <% end %>
+    <div class = "col-8">
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+      <h2><i class="fa-regular fa-user"></i> 管理者ログイン</h2>
+      
+      <div class="card">
+        <%= form_with(model:resource, local: true, url: session_path(resource_name)) do |f| %>
+          <div class="field">
+            メールアドレス<br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@mail.com" %>
+          </div>
+        
+          <div class="field">
+            パスワード<br />
+            <%= f.password_field :password, autocomplete: "current-password", placeholder: "xxxxxx" %>
+          </div>
+          
+          <div class="actions">
+            <br>
+            <%= f.submit "　ログイン　" %>
+          </div>
+        <% end %>
+
+      </div>
+
+    </div>
+    <div class = "col-2">
+    </div>
   </div>
-<% end %>
 
-<%= render "admin/shared/links" %>
+</div>
+
+<style>
+  a {
+    text-decoration: none;
+    color: black; /* リンク特有の青文字もデフォルトの色に戻すために追加 */
+  }
+
+  a:hover {
+    text-decoration: none; /* カーソルを合わせた際に下線を消す */
+  }
+  
+  .card {
+    border: 2px solid black; /* 太い線を設定 */
+    padding: 10px; /* カード内の余白を調整 */
+  }
+</style>
