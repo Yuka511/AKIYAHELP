@@ -1,2 +1,62 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<div class = "container">
+  <div class = "row justify-content-center">
+    <div class = "col-2">
+    </div>
+    <div class = "col-8">
+      
+      <div class="row">
+          <div class="col-12 mb-3">
+            
+            <% @users.each do |user| %>
+              <div class="card">
+                  <div>
+                    
+                    <%= link_to admin_user_path(user) do %>
+                    <!-- ユーザーの詳細 -->
+                    <div style="border: 3px solid black; padding: 10px;">
+                      <div style="display: flex; justify-content: space-between;">
+                        <span style="display: inline-block; margin-right: 20px; margin-left: 20px;"><!-- blockして横並びにする -->
+                          <h2 style="font-weight: bold;"><%= user.name %></h2><!--ユーザー名前-->
+                        </span>
+                      </div>
+                      <div>
+                        <span style="display: inline-block; margin-left: 20px;"><!-- blockして横並びにする -->
+                          <%= image_tag user.get_profile_image(100,100) %><!--プロフィール画像-->
+                        </span>
+                        <span style="display: inline-block; margin-left: 20px;"><!-- blockして横並びにする -->
+                          <p style="color: gray;"><%= user.introduction %></p><!--自己紹介-->
+                        </span>
+                      </div>
+                    </div>
+                    
+                    <% end %>
+                  </div>
+              </div>
+            <% end %>
+            
+          </div>
+      </div>
+
+
+    </div>
+    <div class = "col-2">
+    </div>
+  </div>
+</div>
+
+
+<style>
+  a {
+    text-decoration: none;
+    color: black; /* リンク特有の青文字もデフォルトの色に戻すために追加 */
+  }
+
+  a:hover {
+    text-decoration: none; /* カーソルを合わせた際に下線を消す */
+  }
+  
+  .card {
+    border: 2px solid black; /* 太い線を設定 */
+    padding: 10px; /* カード内の余白を調整 */
+  }
+</style>

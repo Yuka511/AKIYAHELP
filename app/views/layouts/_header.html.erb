@@ -15,10 +15,10 @@
               <span style="border: 2px solid black; border-radius: 50px; padding: 5px;"><%= link_to '会員一覧',admin_path %>
             </li>
             　
-            <!--<li class="nav-item"> <!-- すべてのユーザーの投稿一覧 -->
-            <!--  <span style="border: 2px solid black; border-radius: 50px; padding: 5px;"><!%= link_to 'みんなのPOST', posts_path %>-->
-            <!--</li>-->
-
+            <li class="nav-item"> <!-- すべてのユーザーの投稿一覧 -->
+              <span style="border: 2px solid black; border-radius: 50px; padding: 5px;"><%= link_to 'みんなの投稿', admin_posts_path %>
+            </li>
+            　
             <li class="nav-item"> <!-- ログアウト -->
               <span style="border: 2px solid black; border-radius: 50px; padding: 5px;"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
             </li>

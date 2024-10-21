@@ -18,6 +18,10 @@
             <%= f.text_field :name, autofocus: true, id: "inputName", placeholder: "名前" %><br><br> <!-- 名前入力欄と改行 -->
           </div>
           <div style="margin-left: 20px; margin-right: 20px;">
+            <label for="inputNameKana">名前（フリガナ）</label><br> <!-- 名前カナラベルを改行表示 -->
+            <%= f.text_field :name_kana, autofocus: true, id: "inputNameKana", placeholder: "名前（フリガナ）" %><br><br> <!-- 名前入力欄と改行 -->
+          </div>
+          <div style="margin-left: 20px; margin-right: 20px;">
             <label for="introduction">自己紹介</label><br> <!-- 自己紹介ラベルを改行表示 -->
             <%= f.text_area :introduction, class: "form-control introduction", placeholder: "自己紹介" %><br><br> <!-- 自己紹介入力欄と改行 -->
           </div>
