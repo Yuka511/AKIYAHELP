@@ -9,6 +9,7 @@
 
               <div class="card">
                   <div>
+                    
                     <div style="color: black; display: flex; justify-content: space-between; align-items: center;">
                       <div>
                         <%= link_to(@post.user) do %>
@@ -17,10 +18,17 @@
                         　<%= @post.user.name %> <!-- ユーザーネーム -->
                       </div>
                       <% if @user == current_user %>
-                        <div style="float: right; margin-right: 20px;">
-                          <%= link_to edit_post_path(@post), class: "btn btn-outline-secondary btn-block" do %>
-                            <i class="fa-regular fa-pen-to-square"></i> <!-- 編集ボタン -->
-                          <% end %>
+                        <div style="display: flex; align-items: center; margin-right: 20px;">
+                          <div style="margin-right: 20px;">
+                            <%= link_to edit_post_path(@post), class: "btn btn-outline-secondary" do %>
+                              編集 <i class="fa-regular fa-pen-to-square"></i>
+                            <% end %>
+                          </div>
+                          <div>
+                            <%= link_to @post, method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-outline-danger", style: "font-weight: bold" do %>
+                              削除 <i class="fa-solid fa-file-circle-minus"></i>
+                            <% end %>
+                          </div>
                         </div>
                       <% end %>
                     </div>

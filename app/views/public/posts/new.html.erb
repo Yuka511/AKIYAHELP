@@ -8,7 +8,13 @@
       <div class="row">
           <div class="col-12 mb-3">
             <br>
-              <div class="card">
+            
+              <!--バリデーションメッセージ-->
+              <% flash.each do |message_type, message| %>
+                <div class="flash-message <%= message_type %>"><%= message %></div>
+              <% end %>
+              
+              <div class="card", style="background-color: lightyellow; border: 3px solid black; padding: 10px;">
                         
                   <div>
                     <div style="color: black; display: flex; justify-content: space-between; align-items: center;">
@@ -21,14 +27,14 @@
                     </div>
                   <%= form_with model: @post do |f| %>
                     <hr> <!-- 区切りの横線 -->
-                    <h5 style="font-weight: bold; color: black;">　<%= f.text_field :title, placeholder: "タイトルを入力してください", style: "width: 50%;" %></h5>
+                    <h5 style="font-weight: bold; color: black;">　<%= f.text_field :title, placeholder: "（必須）タイトルを入力してください", style: "width: 50%;" %></h5>
                     <hr> <!-- 区切りの横線 -->
-                    <p style="color: black;">　<%= f.text_area :body, placeholder: "本文を入力してください", style: "width: 70%;" %><br></p>
+                    <p style="color: black;">　<%= f.text_area :body, placeholder: "（必須）本文を入力してください", style: "width: 70%;" %><br></p>
                     <hr> <!-- 区切りの横線 -->
                     　<strong>画像</strong> <%= f.file_field :image, accept: "image/*" %>
                     <hr> <!-- 区切りの横線 -->
                     <div style="text-align: right; margin-right: 20px;">
-                      <%= f.submit '投稿' , class: "btn btn-primary", style: "font-weight: bold" %>
+                      <%= f.submit '投稿' , class: "btn btn-outline-primary", style: "font-weight: bold" %>
                     </div>
                   <% end %>
                   </div>

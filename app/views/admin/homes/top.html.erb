@@ -5,39 +5,37 @@
     <div class = "col-8">
       <h3><span style="border: 2px solid black; border-radius: 50px; padding: 5px;">　会員一覧 <i class="fa-solid fa-users"></i>　</span></h3>
       <br>
+      
       <div class="row">
           <div class="col-12 mb-3">
             
-            <% @users.each do |user| %>
-              <div class="card">
-                  <div>
-                    
-                    <%= link_to admin_user_path(user) do %>
-                    <!-- ユーザーの詳細 -->
-                    <div style="border: 3px solid black; padding: 10px;">
-                      <div style="display: flex; justify-content: space-between;">
-                        <span style="display: inline-block; margin-right: 20px; margin-left: 20px;"><!-- blockして横並びにする -->
-                          <h2 style="font-weight: bold;"><%= user.name %></h2><!--ユーザー名前-->
-                        </span>
-                      </div>
-                      <div>
-                        <span style="display: inline-block; margin-left: 20px;"><!-- blockして横並びにする -->
-                          <%= image_tag user.get_profile_image(100,100) %><!--プロフィール画像-->
-                        </span>
-                        <span style="display: inline-block; margin-left: 20px;"><!-- blockして横並びにする -->
-                          <p style="color: gray;"><%= user.introduction %></p><!--自己紹介-->
-                        </span>
-                      </div>
-                    </div>
-                    
-                    <% end %>
-                  </div>
-              </div>
-            <% end %>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>ユーザーID</th>
+                  <th>名前</th>
+                  <th>プロフィール画像</th>
+                  <th>メールアドレス</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @users.each do |user| %>
+                  <tr>
+                    <td><%= user.id %></td>
+                    <td>
+                      <%= link_to admin_user_path(user), style: "text-decoration: underline" do %>
+                        <%= user.name %>
+                      <% end %>
+                    </td>
+                    <td><%= image_tag user.get_profile_image(50,50) %></td>
+                    <td><%= user.email %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
             
           </div>
       </div>
-
 
     </div>
     <div class = "col-2">
@@ -45,19 +43,15 @@
   </div>
 </div>
 
-
+<!-- styleで、ユーザー一覧のテーブルに灰色の横線を付けています -->
 <style>
-  a {
-    text-decoration: none;
-    color: black; /* リンク特有の青文字もデフォルトの色に戻すために追加 */
+  table.table {
+    border-collapse: collapse;
   }
-
-  a:hover {
-    text-decoration: none; /* カーソルを合わせた際に下線を消す */
+  table.table td, table.table th {
+    border-bottom: 1px solid #dddddd;
   }
-  
-  .card {
-    border: 2px solid black; /* 太い線を設定 */
-    padding: 10px; /* カード内の余白を調整 */
+  table.table tr:last-child td, table.table tr:last-child th {
+    border-bottom: 1px solid #dddddd;
   }
 </style>

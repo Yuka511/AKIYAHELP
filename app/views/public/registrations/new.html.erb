@@ -8,6 +8,7 @@
       
       <div class="card">
         <%= form_with model: @user, url: user_registration_path do |f| %>
+          <%= render "public/shared/error_messages", resource: resource %><!--バリデーションメッセージ-->
         
           <div class="field">
             名前<br>
@@ -25,7 +26,7 @@
           </div>
         
           <div class="field">
-            パスワード<strong>（6字以上）</strong><br>
+            パスワード<strong>（6文字以上）</strong><br>
             <%= f.password_field :password, autocomplete: "new-password", placeholder: "xxxxxx" %>
           </div>
         

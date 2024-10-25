@@ -8,7 +8,11 @@
         <div style="display: inline-block; margin-right: 20px; margin-left: 20px; margin-bottom: 20px;"> <!-- blockして横並びにする/ボーダーライン間に余白を追加 -->
           <h2 style="font-weight: bold;">プロフィール編集</h2>
         </div>
+        
         <%= form_with model: @user, local: true do |f| %>
+        
+          <%= render "public/shared/error_messages", resource: @user %><!--バリデーションメッセージ-->
+          
           <div style="margin-left: 20px; margin-right: 20px;">
             <label for="inputImage">プロフィール画像<strong>（※正方形の画像を選択してください）</stoong></label><br> <!-- 画像ラベルを改行表示 -->
             <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %><br><br> <!-- 画像ファイル選択と改行 -->
@@ -30,10 +34,11 @@
             <%= f.text_area :introduction, class: "form-control introduction", placeholder: "自己紹介" %><br><br> <!-- 自己紹介入力欄と改行 -->
           </div>
           <div style="margin-left: 20px; margin-right: 20px; text-align: right;">
-            <%= f.submit "変更を保存", class: "btn btn-primary" %>　
+            <%= f.submit "変更を保存", class: "btn btn-outline-primary" %>　
             <%= link_to 'アカウントを削除', @user, method: :delete, data: { confirm: 'アカウントを削除するとデータが完全に削除され、元に戻すことはできません。本当に削除しますか？' }, class: "btn btn-danger", style: "font-weight: bold" %>
           </div>
         <% end %>
+        
       </div>
       
     </div>
