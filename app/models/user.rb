@@ -3,6 +3,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  validates :name, presence: true, length: { minimum: 2, maximum: 20 }
+  validates :name_kana, presence: true, format: { message: "はカタカナで入力してください", with: /\A[ァ-ヶー－]+\z/ }, length: { minimum: 2, maximum: 20 }
+  validates :email, presence: true, format: { message: "を正しく入力してください", with: /\A([^@\s]+)@((?:[-a-z0-9]+.)+[a-z]{2,})\z/i }
   
   has_many :posts, dependent: :destroy
   

@@ -21,6 +21,7 @@ class Public::PostsController < ApplicationController
     if @post.save
       redirect_to post_path(@post)
     else
+      flash.now[:alert] = "※必須項目をすべて入力してください。"
       render :new
     end
   end
@@ -34,6 +35,7 @@ class Public::PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to post_path(@post)
     else
+      flash.now[:alert] = "※必須項目をすべて入力してください。"
       render :edit
     end
   end
