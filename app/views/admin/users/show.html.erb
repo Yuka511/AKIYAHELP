@@ -8,7 +8,7 @@
       <div style="background-color: lightblue; border: 3px solid black; padding: 10px;">
         <div style="display: flex; justify-content: space-between;">
           <span style="display: inline-block; margin-right: 20px; margin-left: 20px;"><!-- blockして横並びにする -->
-            <h2 style="font-weight: bold;"><%= @user.name %></h2><!--ユーザー名前-->
+            <h4 style="font-weight: bold;">（名前）<%= @user.name %></h4>
           </span>
           <% unless @user.guest_user? %>
             <span style="display: inline-block; margin-right: 20px;"><!-- blockして横並びにする -->
@@ -16,12 +16,18 @@
             </span>
           <% end %>
         </div>
+        <div style="display: flex; justify-content: space-between;">
+          <span style="display: inline-block; margin-right: 20px; margin-left: 20px;"><!-- blockして横並びにする -->
+            <p style="color: gray;">（フリガナ）<%= @user.name_kana %></p>
+          </span>
+        </div>
         <div>
           <span style="display: inline-block; margin-left: 20px;"><!-- blockして横並びにする -->
             <%= image_tag @user.get_profile_image(100,100) %><!--プロフィール画像-->
           </span>
           <span style="display: inline-block; margin-left: 20px;"><!-- blockして横並びにする -->
-            <p style="color: gray;"><%= @user.introduction %></p><!--自己紹介-->
+            <p>（メールアドレス）<%= @user.email %></p>
+            <p style="color: gray;">（自己紹介）<%= @user.introduction %></p><!--自己紹介-->
           </span>
         </div>
         <hr style="border-top: 2px solid black;"> <!-- 区切りの横線 -->
@@ -34,7 +40,9 @@
           </span>
         </div>
       </div>
-
+      
+      <br><br>
+      <h3><span style="border: 2px solid black; border-radius: 50px; padding: 5px;">　<%= @user.name %>の投稿一覧 <i class="fa-regular fa-file"></i>　</span></h3>
       <!-- ユーザーの投稿一覧 -->
       <%= render 'public/posts/post', posts: @posts, user: @user %>
     </div>
