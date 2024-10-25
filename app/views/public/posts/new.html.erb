@@ -17,18 +17,26 @@
                         　<%= image_tag @post.user.get_profile_image(50, 50), class: "mt-3 rounded-circle" %> <!-- 投稿ユーザー画像 -->
                         <% end %>
                         　<%= @post.user.name %> <!-- ユーザーネーム -->
+
+                        <!--バリデーションメッセージ-->
+                        <% if @post.errors.any? %>
+                            <span style="color: red; font-weight: bold;"><!--エラーメッセージの赤字、太字表示-->
+                              ※必須項目をすべて入力してください
+                            </span>
+                        <% end %>
+
                       </div>
                     </div>
                   <%= form_with model: @post do |f| %>
                     <hr> <!-- 区切りの横線 -->
-                    <h5 style="font-weight: bold; color: black;">　<%= f.text_field :title, placeholder: "タイトルを入力してください", style: "width: 50%;" %></h5>
+                    <h5 style="font-weight: bold; color: black;">　<%= f.text_field :title, placeholder: "（必須）タイトルを入力してください", style: "width: 50%;" %></h5>
                     <hr> <!-- 区切りの横線 -->
-                    <p style="color: black;">　<%= f.text_area :body, placeholder: "本文を入力してください", style: "width: 70%;" %><br></p>
+                    <p style="color: black;">　<%= f.text_area :body, placeholder: "（必須）本文を入力してください", style: "width: 70%;" %><br></p>
                     <hr> <!-- 区切りの横線 -->
                     　<strong>画像</strong> <%= f.file_field :image, accept: "image/*" %>
                     <hr> <!-- 区切りの横線 -->
                     <div style="text-align: right; margin-right: 20px;">
-                      <%= f.submit '投稿' , class: "btn btn-primary", style: "font-weight: bold" %>
+                      <%= f.submit '投稿' , class: "btn btn-outline-primary", style: "font-weight: bold" %>
                     </div>
                   <% end %>
                   </div>
