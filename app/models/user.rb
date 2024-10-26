@@ -10,6 +10,11 @@ class User < ApplicationRecord
   
   has_many :posts, dependent: :destroy
   
+  #ユーザー検索機能
+  def self.search_for(content, method)
+    User.where("name LIKE ? OR name_kana LIKE ? OR introduction LIKE ?", "%#{content}%", "%#{content}%", "%#{content}%")
+  end
+  
   #プロフィール画像設定
   has_one_attached :profile_image
   def get_profile_image(width, height)

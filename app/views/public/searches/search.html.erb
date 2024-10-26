@@ -1,0 +1,56 @@
+<div class = "container">
+  <div class = "row justify-content-center">
+    <div class = "col-2">
+    </div>
+    <div class = "col-8">
+      
+      <!--<!%= @user_records.inspect %><!--"@records"の中身を確認することで、何がセットされているかを確認する記述-->
+
+      <% if @model == 'user' %> <!-- ユーザーの検索結果の表示 -->
+        <h3><span style="border: 2px solid black; border-radius: 50px; padding: 5px;">　ユーザーの検索結果 「<%= @content %>」　</h3>
+        <br>
+        <% @user_records.each do |user| %>
+          <div style="background-color: lightblue; border: 3px solid black; padding: 10px; margin-bottom: 10px;">
+            <div style="display: flex; justify-content: space-between;">
+              <span style="display: inline-block; margin-right: 20px; margin-left: 20px;"><!-- blockして横並びにする -->
+                <h2 style="font-weight: bold;"><%= user.name %></h2><!--ユーザー名前-->
+              </span>
+              <% if !user.guest_user? && user == current_user %>
+                <span style="display: inline-block; margin-right: 20px;"><!-- blockして横並びにする -->
+                  <%= link_to edit_user_path(user.id), class: "btn btn-outline-secondary btn-block" do %>
+                    プロフィールを編集する<i class="fa-solid fa-user-pen" style="padding-left: 4px;"></i><!--編集ボタン-->
+                  <% end %>
+                </span>
+              <% end %>
+            </div>
+            <div>
+              <span style="display: inline-block; margin-left: 20px;"><!-- blockして横並びにする -->
+                <%= image_tag user.get_profile_image(100,100) %><!--プロフィール画像-->
+              </span>
+              <span style="display: inline-block; margin-left: 20px;"><!-- blockして横並びにする -->
+                <p style="color: gray;"><%= user.introduction %></p><!--自己紹介-->
+              </span>
+            </div>
+            <hr style="border-top: 2px solid black;"> <!-- 区切りの横線 -->
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="color: black; text-align: center; flex: 1; font-weight: bold;">
+                <!--<!%= link_to "Follows" user.followings, user_followings_path(user) %>　<!%= link_to user.followings.count, user_followings_path(user) %>-->フォロー
+              </span>
+              <span style="border-left: 2px solid black; padding-left: 10px; padding-right: 10px; color: black; text-align: center; flex: 1; font-weight: bold;">
+                <!--<!%= link_to "Followers" user.followers, user_followers_path(user) %>　<!%= link_to user.followers.count, user_followers_path(user) %>-->フォロワー
+              </span>
+            </div>
+          </div>
+        <% end %>
+        
+      <% elsif @model == 'post' %><!-- ポストの検索結果の表示 -->
+        <h3><span style="border: 2px solid black; border-radius: 50px; padding: 5px;">　投稿の検索結果 「<%= @content %>」　</h3>
+        <%= render 'public/posts/post', posts: @post_records, post: @post %>
+        
+      <% end %>
+
+    </div>
+    <div class = "col-2">
+    </div>
+  </div>
+</div>
