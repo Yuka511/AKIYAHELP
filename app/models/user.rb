@@ -9,6 +9,7 @@ class User < ApplicationRecord
   validates :email, presence: true, format: { message: "を正しく入力してください", with: /\A([^@\s]+)@((?:[-a-z0-9]+.)+[a-z]{2,})\z/i }
   
   has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
   
   #ユーザー検索機能
   def self.search_for(content, method)
