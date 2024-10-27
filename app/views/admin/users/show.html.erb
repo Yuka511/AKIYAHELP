@@ -41,10 +41,16 @@
         </div>
       </div>
       
-      <br><br>
-      <h3><span style="border: 2px solid black; border-radius: 50px; padding: 5px;">　<%= @user.name %>の投稿一覧 <i class="fa-regular fa-file"></i>　</span></h3>
-      <!-- ユーザーの投稿一覧 -->
-      <%= render 'public/posts/post', posts: @posts, user: @user %>
+      <br>
+      <br>
+      <% if @posts.present? %><!--POSTが投稿されている場合-->
+        <span style="border: 2px solid black; border-radius: 50px; padding: 5px;">　<%= @user.name %>の投稿一覧 <i class="fa-regular fa-file"></i>　</span>
+        <div style="margin-top: -35px;"><!--brを狭く-->
+          <br>
+        </div>
+        <!-- ユーザーの投稿一覧 -->
+        <%= render 'public/posts/post', posts: @posts, user: @user %>
+      <% end %>
     </div>
     <div class = "col-2">
     </div>
