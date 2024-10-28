@@ -25,6 +25,9 @@ Rails.application.routes.draw do
 
     get "/mypage", to: "users#mypage", as: "mypage"
     resources :users, only: [:edit,:show,:update,:destroy] do
+      member do
+       get :favorites
+      end
       resource :relationships, only: [:create, :destroy]
         get "followings" => "relationships#followings", as: "followings"
         get "followers" => "relationships#followers", as: "followers"

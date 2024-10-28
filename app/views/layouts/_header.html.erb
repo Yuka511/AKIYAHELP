@@ -60,6 +60,13 @@
                 <% end %>
             </li>
 
+            <li class="nav-item"> <!-- いいね一覧 -->
+              <span style="display: inline-block; margin-top: 5px; margin-bottom: 5px; border: 2px solid black; border-radius: 50px; padding: 5px; margin-right: 10px;">
+                <%= link_to favorites_user_path(current_user) do %>
+                  いいねした投稿 <i class="fa-solid fa-heart"></i>
+                <% end %>
+            </li>
+
             <li class="nav-item"> <!-- すべてのユーザーの投稿一覧 -->
               <span style="display: inline-block; margin-top: 5px; margin-bottom: 5px; border: 2px solid black; border-radius: 50px; padding: 5px; margin-right: 10px;">
                 <%= link_to posts_path do %>

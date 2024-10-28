@@ -37,6 +37,13 @@ class Public::UsersController < ApplicationController
     @user.destroy
     redirect_to new_user_registration_path
   end
+  
+  #いいね一覧
+  def favorites
+    @user = User.find(params[:id])
+    favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
+    @favorite_posts = Post.where(id: favorites).order(created_at: :desc)
+  end
 
   #ストロングパラメータ
   private
