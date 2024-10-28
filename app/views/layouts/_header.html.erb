@@ -12,21 +12,21 @@
         <ul class="navbar-nav ml-auto">
           <% if admin_signed_in? %> <!--管理者がログインした場合 -->
             <li class="nav-item"> <!-- 会員一覧 -->
-              <span style="border: 2px solid black; border-radius: 50px; padding: 5px; margin-right: 10px;">
+              <span style="display: inline-block; margin-top: 5px; margin-bottom: 5px; border: 2px solid black; border-radius: 50px; padding: 5px; margin-right: 10px;">
                 <%= link_to admin_path do%>
                   会員一覧 <i class="fa-solid fa-users"></i>
                 <% end %>
             </li>
 
             <li class="nav-item"> <!-- すべてのユーザーの投稿一覧 -->
-              <span style="border: 2px solid black; border-radius: 50px; padding: 5px; margin-right: 10px;">
+              <span style="display: inline-block; margin-top: 5px; margin-bottom: 5px; border: 2px solid black; border-radius: 50px; padding: 5px; margin-right: 10px;">
                 <%= link_to admin_posts_path do %>
                   みんなの投稿 <i class="fa-regular fa-file"></i>
                 <% end %>
             </li>
 
             <li class="nav-item"> <!-- ログアウト -->
-              <span style="border: 2px solid black; border-radius: 50px; padding: 5px;">
+              <span style="display: inline-block; margin-top: 5px; margin-bottom: 5px; border: 2px solid black; border-radius: 50px; padding: 5px;">
                 <%= link_to destroy_user_session_path, method: :delete do %>
                   ログアウト <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 <% end %>
@@ -50,57 +50,57 @@
         <ul class="navbar-nav ml-auto">
           <% if user_signed_in? %> <!--ユーザーがログインした場合 -->
             <li class="nav-item"> <!-- about -->
-              <span style="border: 2px solid black; border-radius: 50px; padding: 5px; margin-right: 10px;"><%= link_to '～About～', about_path %>
+              <span style="display: inline-block; margin-top: 5px; margin-bottom: 5px; border: 2px solid black; border-radius: 50px; padding: 5px; margin-right: 10px;"><%= link_to '～About～', about_path %>
             </li>
 
             <li class="nav-item"> <!-- マイページ -->
-              <span style="border: 2px solid black; border-radius: 50px; padding: 5px; margin-right: 10px;">
+              <span style="display: inline-block; margin-top: 5px; margin-bottom: 5px; border: 2px solid black; border-radius: 50px; padding: 5px; margin-right: 10px;">
                 <%= link_to mypage_path do %>
                   マイページ <i class="fa-solid fa-user"></i>
                 <% end %>
             </li>
 
             <li class="nav-item"> <!-- すべてのユーザーの投稿一覧 -->
-              <span style="border: 2px solid black; border-radius: 50px; padding: 5px; margin-right: 10px;">
+              <span style="display: inline-block; margin-top: 5px; margin-bottom: 5px; border: 2px solid black; border-radius: 50px; padding: 5px; margin-right: 10px;">
                 <%= link_to posts_path do %>
                   みんなの投稿 <i class="fa-regular fa-file"></i>
                 <% end %>
             </li>
 
             <li class="nav-item"> <!-- 新規投稿post -->
-              <span style="border: 2px solid black; border-radius: 50px; padding: 5px; margin-right: 10px;">
+              <span style="display: inline-block; margin-top: 5px; margin-bottom: 5px; border: 2px solid black; border-radius: 50px; padding: 5px; margin-right: 10px;">
                 <%= link_to new_post_path do %>
                   新規投稿 <i class="fa-solid fa-file-circle-plus"></i>
                 <% end %>
             </li>
 
             <li class="nav-item"> <!-- ログアウト -->
-              <span style="border: 2px solid black; border-radius: 50px; padding: 5px;">
+              <span style="display: inline-block; margin-top: 5px; margin-bottom: 5px; border: 2px solid black; border-radius: 50px; padding: 5px;">
                 <%= link_to destroy_user_session_path, method: :delete do %>
                   ログアウト <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 <% end %>
             </li>
           <% else %>　<!--ユーザーがログアウトした場合 -->
             <li class="nav-item"> <!-- about -->
-              <span style="border: 2px solid black; border-radius: 50px; padding: 5px; margin-right: 10px;"><%= link_to '～About～', about_path %>
+              <span style="display: inline-block; margin-top: 5px; margin-bottom: 5px; border: 2px solid black; border-radius: 50px; padding: 5px; margin-right: 10px;"><%= link_to '～About～', about_path %>
             </li>
 
             <li class="nav-item"> <!-- 新規会員登録 -->
-              <span style="border: 2px solid black; border-radius: 50px; padding: 5px; margin-right: 10px;">
+              <span style="display: inline-block; margin-top: 5px; margin-bottom: 5px; border: 2px solid black; border-radius: 50px; padding: 5px; margin-right: 10px;">
                 <%= link_to new_user_registration_path do %>
                   会員登録 <i class="fa-solid fa-user-plus"></i>
                 <% end %>
             </li>
 
             <li class="nav-item"> <!-- ゲストログイン -->
-               <span style="border: 2px solid black; border-radius: 50px; padding: 5px; margin-right: 10px;">
+               <span style="display: inline-block; margin-top: 5px; margin-bottom: 5px; border: 2px solid black; border-radius: 50px; padding: 5px; margin-right: 10px;">
                  <%= link_to users_guest_sign_in_path, method: :post do %>
                    ゲストログイン <i class="fa-solid fa-user-tie"></i>
                  <% end %>
             </li>
 
             <li class="nav-item"> <!-- ログイン -->
-              <span style="border: 2px solid black; border-radius: 50px; padding: 5px;">
+              <span style="display: inline-block; margin-top: 5px; margin-bottom: 5px; border: 2px solid black; border-radius: 50px; padding: 5px;">
                 <%= link_to new_user_session_path do %>
                   ログイン <i class="fa-regular fa-user"></i>
                 <% end %>
