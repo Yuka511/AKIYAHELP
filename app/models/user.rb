@@ -10,6 +10,7 @@ class User < ApplicationRecord
   
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   
   #ユーザー検索機能
   def self.search_for(content, method)
