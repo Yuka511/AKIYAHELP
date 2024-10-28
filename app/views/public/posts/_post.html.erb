@@ -63,19 +63,9 @@
                       <% if admin_signed_in? %><!--管理者の場合-->
                         <i class="fa-regular fa-heart"></i> <%= post.favorites.count %>
                       <% else %><!--ユーザーの場合-->
-                        <% if post.favorited_by?(current_user) %>
-                          <p>
-                            <%= link_to post_favorites_path(post), method: :delete do %>
-                              <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i> <%= post.favorites.count %> 
-                            <% end %>
-                          </p>
-                          <% else %>
-                          <p>
-                            <%= link_to post_favorites_path(post), method: :post do %>
-                              <i class="fa-regular fa-heart"></i> <%= post.favorites.count %> 
-                            <% end %>
-                          </p>
-                        <% end %>
+                        <div id="favorite_<%= post.id %>">
+                          <%= render "public/favorites/btn", post: post %>
+                        </div>
                       <% end %>
                     </span>
                   </div>

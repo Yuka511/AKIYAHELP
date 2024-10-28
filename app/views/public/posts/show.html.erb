@@ -62,19 +62,9 @@
                       <span style="color: gray; text-align: center; flex: 1;"><i class="fa-regular fa-comment"></i> <%= @post.comments.count %></span>
                       <!--いいね-->
                       <span style="color: gray; text-align: right; margin-right: 20px;">
-                        <% if @post.favorited_by?(current_user) %>
-                          <p>
-                            <%= link_to post_favorites_path(@post), method: :delete do %>
-                              <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i> <%= @post.favorites.count %> 
-                            <% end %>
-                          </p>
-                          <% else %>
-                          <p>
-                            <%= link_to post_favorites_path(@post), method: :post do %>
-                              <i class="fa-regular fa-heart"></i> <%= @post.favorites.count %> 
-                            <% end %>
-                          </p>
-                        <% end %>
+                        <div id="favorite_<%= @post.id %>">
+                          <%= render "public/favorites/btn", post: @post %>
+                        </div>
                       </span>
                     </div>
                   </div>
