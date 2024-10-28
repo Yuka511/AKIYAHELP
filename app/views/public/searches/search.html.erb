@@ -7,7 +7,7 @@
       <!--<!%= @user_records.inspect %><!--"@records"の中身を確認することで、何がセットされているかを確認する記述-->
 
       <% if @model == 'user' %> <!-- ユーザーの検索結果の表示 -->
-        <h3><span style="border: 2px solid black; border-radius: 50px; padding: 5px;">　ユーザーの検索結果 「<%= @content %>」　</h3>
+        <h3><span style="display: inline-block; margin-top: 5px; margin-bottom: 5px; border: 2px solid black; border-radius: 50px; padding: 5px;">　ユーザーの検索結果 「<%= @content %>」　</h3>
         <br>
         <% @user_records.each do |user| %>
           <div style="background-color: lightblue; border: 3px solid black; padding: 10px; margin-bottom: 10px;">
@@ -44,7 +44,7 @@
         <% end %>
         
       <% elsif @model == 'post' %><!-- ポストの検索結果の表示 -->
-        <h3><span style="border: 2px solid black; border-radius: 50px; padding: 5px;">　投稿の検索結果 「<%= @content %>」　</h3>
+        <h3><span style="display: inline-block; margin-top: 5px; margin-bottom: 5px; border: 2px solid black; border-radius: 50px; padding: 5px;">　投稿の検索結果 「<%= @content %>」　</h3>
         <%= render 'public/posts/post', posts: @post_records, post: @post %>
         
       <% end %>
