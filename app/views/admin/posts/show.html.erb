@@ -36,7 +36,7 @@
                     <% end %>
                     <hr> <!-- 区切りの横線 -->
                     <div style="display: flex; justify-content: space-between;">
-                      <span style="color: gray; text-align: left; margin-left: 20px;"><%= @post.created_at.in_time_zone("Tokyo").strftime('%Y/%m/%d') %></span>
+                      <span style="color: gray; text-align: left; margin-left: 20px;"><%= @post.created_at.in_time_zone("Tokyo").strftime('%Y/%m/%d %H:%M:%S') %></span>
                       <span style="color: gray; text-align: center; flex: 1;"><i class="fa-regular fa-comment"></i> <%= @post.comments.count %></span>
                       <span style="color: gray; text-align: right; margin-right: 20px;"><i class="fa-regular fa-heart"></i> <%= @post.favorites.count %></span>
                     </div>
