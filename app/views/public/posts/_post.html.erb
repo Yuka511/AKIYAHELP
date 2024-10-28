@@ -44,9 +44,30 @@
                   <% end %>
                   <hr> <!-- 区切りの横線 -->
                   <div style="display: flex; justify-content: space-between;">
+                    <!--投稿日-->
                     <span style="color: gray; text-align: left; margin-left: 20px;"><%= post.created_at.in_time_zone("Tokyo").strftime('%Y/%m/%d') %></span>
-                    <span style="color: gray; text-align: center; flex: 1;"><i class="fa-regular fa-comment"></i>コメント数：<%= post.comments.count %></span>
-                    <span style="color: gray; text-align: right; margin-right: 20px;"><i class="fa-solid fa-heart"></i>いいね数：</span>
+                    <!--コメント数-->
+                    <span style="color: gray; text-align: center; flex: 1;">
+                      <% if admin_signed_in? %><!--管理者の場合-->
+                        <%= link_to admin_post_path(post) do %> <!-- post/showへのリンク -->
+                          <i class="fa-regular fa-comment"></i> <%= post.comments.count %>
+                        <% end %>
+                      <% else %><!--ユーザーの場合-->
+                        <%= link_to post_path(post.id) do %> <!-- post/showへのリンク -->
+                          <i class="fa-regular fa-comment"></i> <%= post.comments.count %>
+                        <% end %>
+                      <% end %>
+                    </span>
+                    <!--いいね-->
+                    <span style="color: gray; text-align: right; margin-right: 20px;">
+                      <% if admin_signed_in? %><!--管理者の場合-->
+                        <i class="fa-regular fa-heart"></i> <%= post.favorites.count %>
+                      <% else %><!--ユーザーの場合-->
+                        <div id="favorite_<%= post.id %>">
+                          <%= render "public/favorites/btn", post: post %>
+                        </div>
+                      <% end %>
+                    </span>
                   </div>
                 </div>
             </div>

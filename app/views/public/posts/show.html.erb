@@ -56,9 +56,16 @@
                     <% end %>
                     <hr> <!-- 区切りの横線 -->
                     <div style="display: flex; justify-content: space-between;">
-                      <span style="color: gray; text-align: left; margin-left: 20px;"><%= @post.created_at.in_time_zone("Tokyo").strftime('%Y/%m/%d') %></span>
-                      <span style="color: gray; text-align: center; flex: 1;"><i class="fa-regular fa-comment"></i>コメント数：<%= @post.comments.count %></span>
-                      <span style="color: gray; text-align: right; margin-right: 20px;"><i class="fa-solid fa-heart"></i>いいね数：</span>
+                      <!--投稿日-->
+                      <span style="color: gray; text-align: left; margin-left: 20px;"><%= @post.created_at.in_time_zone("Tokyo").strftime('%Y/%m/%d %H:%M:%S') %></span>
+                      <!--コメント数-->
+                      <span style="color: gray; text-align: center; flex: 1;"><i class="fa-regular fa-comment"></i> <%= @post.comments.count %></span>
+                      <!--いいね-->
+                      <span style="color: gray; text-align: right; margin-right: 20px;">
+                        <div id="favorite_<%= @post.id %>">
+                          <%= render "public/favorites/btn", post: @post %>
+                        </div>
+                      </span>
                     </div>
                   </div>
               </div>

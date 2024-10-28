@@ -2,9 +2,16 @@ class Post < ApplicationRecord
   
   belongs_to :user
   has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   
   validates :title, presence: true
   validates :body, presence: true
+  
+  #いいね機能
+  def favorited_by?(user)
+    return false if user.nil? # ユーザーがnilの場合はfalseを返す
+    favorites.exists?(user_id: user.id)
+  end
   
   #POST検索機能
   def self.search_for(content, method)

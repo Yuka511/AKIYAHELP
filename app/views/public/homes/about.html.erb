@@ -6,9 +6,11 @@
     </div>
     <div class = "col-8">
       <div class="flash-notice">
-         <% flash.each do |message_type, message| %>
-           <div class="flash-message <%= message_type %>"><%= message %></div>
-         <% end %>
+        <% flash.each do |message_type, message| %>
+          <% if message_type == "notice" %> <!-- ログアウトした場合の条件を追加 -->
+            <div class="flash-message <%= message_type %>"><%= message %></div>
+          <% end %>
+        <% end %>
       </div>
     </div>
     <div class = "col-2">
