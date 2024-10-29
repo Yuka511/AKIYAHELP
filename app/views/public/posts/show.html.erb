@@ -81,6 +81,9 @@
               </div>
               
               <div class="card" style= "background: lightyellow;"><!--コメントnew-->
+                <% if @comment.user.guest_user? %>
+                  <p style="color: red;"><strong>（※ゲストユーザーはログアウト時にデータがリセットされます。）</strong></p><!--ゲストの場合-->
+                <% end %>
                 <div style="margin-left: 20px; margin-right: 20px; text-align: right;">
                   <%= form_with model: [@post, @comment] do |f| %>
                     <%= f.text_area :body, rows:'5', placeholder: "コメントをここに", class: "w-100" %>
