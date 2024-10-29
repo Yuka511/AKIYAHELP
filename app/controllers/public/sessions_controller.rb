@@ -41,10 +41,12 @@ class Public::SessionsController < Devise::SessionsController
     redirect_to user_path(user), notice: "ゲストでログインしました。"
   end
   
-  def destroy
-   reset_guest_data if current_user.email == User::GUEST_USER_EMAIL
-   super
+def destroy
+  if current_user && current_user.email == User::GUEST_USER_EMAIL
+    reset_guest_data
   end
+  super
+end
 
   protected
   def configure_permitted_parameters
