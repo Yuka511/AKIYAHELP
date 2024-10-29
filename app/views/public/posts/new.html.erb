@@ -34,7 +34,8 @@
                     <hr> <!-- 区切りの横線 -->
                     <p style="color: black;">　<%= f.text_area :body, placeholder: "（必須）本文を入力してください", style: "width: 70%;" %><br></p>
                     <hr> <!-- 区切りの横線 -->
-                    　<strong>画像</strong> <%= f.file_field :image, accept: "image/*" %>
+                    　<strong>画像</strong> <%= f.file_field :image, accept: "image/*" %><br>
+                    　<strong>（※正方形の画像を選択してください）</stoong>
                     <hr> <!-- 区切りの横線 -->
                     <div style="text-align: right; margin-right: 20px;">
                       <%= f.submit '投稿' , class: "btn btn-outline-primary", style: "font-weight: bold" %>
