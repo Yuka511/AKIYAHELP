@@ -31,7 +31,8 @@
                     <hr> <!-- 区切りの横線 -->
                     <p style="color: black;">　<%= f.text_area :body, autofocus: true, placeholder: "（必須）本文を入力してください", style: "width: 70%;" %></p>
                     <hr> <!-- 区切りの横線 -->
-                    　<strong>画像</strong> <%= f.file_field :image, accept: "image/*" %>
+                    　<strong>画像</strong> <%= f.file_field :image, accept: "image/*" %><br>
+                    　<strong>（※正方形の画像を選択してください）</stoong>
                     　<br><br>
                     <% if @post.image.attached? %> <!-- 画像の添付があった場合のみ、画像を表示させる。画像添付がない場合、何も返さない。 -->
                         <%= link_to @post.get_image, target: "_blank" do %>
