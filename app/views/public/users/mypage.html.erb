@@ -42,6 +42,9 @@
           </span>
           <span style="display: inline-block; margin-left: 20px;"><!-- blockして横並びにする -->
             <p style="color: gray;"><%= @user.introduction %></p><!--自己紹介-->
+            <% if @user.guest_user? %>
+              <p style="color: red;"><strong>（※ゲストユーザーはログアウト時にデータがリセットされます。）</strong></p><!--ゲストの場合-->
+            <% end %>
           </span>
         </div>
         <hr style="border-top: 2px solid black;"> <!-- 区切りの横線 -->

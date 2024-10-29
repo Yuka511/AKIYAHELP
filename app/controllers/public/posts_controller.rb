@@ -13,7 +13,7 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @user = @post.user
-    @comment = Comment.new
+    @comment = current_user.comments.build #ユーザーが新しいコメントを作成する際に、その投稿に自動的にユーザー情報が関連付けられる（@comment = Comment.newにユーザー情報の紐づけ）
   end
 
   def create
