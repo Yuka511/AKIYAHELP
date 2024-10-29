@@ -59,7 +59,11 @@
                       <!--投稿日-->
                       <span style="color: gray; text-align: left; margin-left: 20px;"><%= @post.created_at.in_time_zone("Tokyo").strftime('%Y/%m/%d %H:%M:%S') %></span>
                       <!--コメント数-->
-                      <span style="color: gray; text-align: center; flex: 1;"><i class="fa-regular fa-comment"></i> <%= @post.comments.count %></span>
+                      <span style="color: gray; text-align: center; flex: 1;">
+                        <div id="comment_counter">
+                          <%= render "public/comments/counter", post: @post %>
+                        </div>
+                      </span>
                       <!--いいね-->
                       <span style="color: gray; text-align: right; margin-right: 20px;">
                         <div id="favorite_<%= @post.id %>">
@@ -80,17 +84,13 @@
                 <br>
               </div>
               
-              <div class="card" style= "background: lightyellow;"><!--コメントnew-->
+              <!--コメントnew-->
+              <div class="card" style= "background: lightyellow;">
                 <% if @comment.user.guest_user? %>
                   <p style="color: red;"><strong>（※ゲストユーザーはログアウト時にデータがリセットされます。）</strong></p><!--ゲストの場合-->
                 <% end %>
                 <div style="margin-left: 20px; margin-right: 20px; text-align: right;">
-                  <%= form_with model: [@post, @comment] do |f| %>
-                    <%= f.text_area :body, rows:'5', placeholder: "コメントをここに", class: "w-100" %>
-                    <%= button_tag(type: 'submit', class: 'btn btn-outline-primary') do %>
-                      送信 <i class="fa-solid fa-paper-plane"></i>
-                    <% end %>
-                  <% end %>
+                  <%= render "public/comments/form", post: @post, comment: @comment %><!--コメントフォーム-->
                 </div>
               </div>
               
@@ -103,30 +103,10 @@
                 <div style="margin-top: -10px;"><!--brを狭く-->
                   <br>
                 </div>
-                <% @post.comments.order(created_at: :desc).each do |comment| %><!--コメント一覧-->
-                  <div class="card" style="margin-bottom: 10px; display: flex;">
-                    <div style="flex: 0 0 70px; padding: 10px; display: flex; align-items: center;">
-                      <%= link_to(comment.user) do %>
-                        <%= image_tag comment.user.profile_image, size:"50x50", class: "mt-3 rounded-circle" %>
-                      <% end %>
-                      <span style="margin-left: 10px;"><%= comment.user.name %></span>
-                      <span style="color: gray; text-align: left; margin-left: 20px;"><%= comment.created_at.in_time_zone("Tokyo").strftime('%Y/%m/%d %H:%M:%S') %></span>
-                      <div style="margin-left: auto; margin-top: -10px;">
-                        <% if comment.user == current_user %>
-                          <%= link_to post_comment_path(comment.post, comment), method: :delete, data: { confirm: 'コメントを削除しますか？' }, class: "btn btn-outline-danger", style: "font-weight: bold" do %>
-                            削除 <i class="fa-solid fa-file-circle-minus"></i>
-                          <% end %>
-                        <% end %>
-                      </div>
-                    </div>
-                    <hr> <!-- 区切りの横線 -->
-                    <div style="flex: 1; padding: 10px;">
-                      <div>
-                        <%= comment.body %>
-                      </div>
-                    </div>
-                  </div>
-                <% end %>
+                <!--コメント一覧-->
+                <div id="comment_index">
+                  <%= render "public/comments/index", post: @post %>
+                </div>
               <% end %>
           </div>
       </div>

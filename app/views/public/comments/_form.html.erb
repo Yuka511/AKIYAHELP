@@ -1,0 +1,6 @@
+<%= form_with model: [post, comment], local: false do |f| %>
+  <%= f.text_area :body, rows:'5', placeholder: "コメントをここに", class: "w-100", id: "comment_textarea" %>
+  <%= button_tag(type: 'submit', class: 'btn btn-outline-primary') do %>
+    送信 <i class="fa-solid fa-paper-plane"></i>
+  <% end %>
+<% end %>
