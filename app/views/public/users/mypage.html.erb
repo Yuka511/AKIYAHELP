@@ -6,9 +6,11 @@
     </div>
     <div class = "col-8">
       <div class="flash-notice">
-         <% flash.each do |message_type, message| %>
-           <div class="flash-message <%= message_type %>"><%= message %></div>
-         <% end %>
+        <% flash.each do |message_type, message| %>
+          <% if message_type == "notice" %> <!-- ログアウトした場合の条件を追加 -->
+            <div class="flash-message <%= message_type %>"><%= message %></div>
+          <% end %>
+        <% end %>
       </div>
     </div>
     <div class = "col-2">
@@ -45,10 +47,14 @@
         <hr style="border-top: 2px solid black;"> <!-- 区切りの横線 -->
         <div style="display: flex; justify-content: space-between; align-items: center;">
           <span style="color: black; text-align: center; flex: 1; font-weight: bold;">
-            <!--<!%= link_to "Follows" user.followings, user_followings_path(user) %>　<!%= link_to user.followings.count, user_followings_path(user) %>-->フォロー
+            <%= link_to user_followings_path(@user), class: "link-class" do %>
+              フォロー <%= @user.followings.count %>
+            <% end %>
           </span>
           <span style="border-left: 2px solid black; padding-left: 10px; padding-right: 10px; color: black; text-align: center; flex: 1; font-weight: bold;">
-            <!--<!%= link_to "Followers" user.followers, user_followers_path(user) %>　<!%= link_to user.followers.count, user_followers_path(user) %>-->フォロワー
+            <%= link_to user_followers_path(@user), class: "link-class" do %>
+              フォロワー <%= @user.followers.count %>
+            <% end %>
           </span>
         </div>
       </div>
