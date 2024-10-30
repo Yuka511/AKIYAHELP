@@ -12,7 +12,7 @@
           </span>
           <% unless @user.guest_user? %>
             <span style="display: inline-block; margin-right: 20px;"><!-- blockして横並びにする -->
-              <%= link_to 'アカウントを削除', @user, method: :delete, data: { confirm: 'アカウントを削除するとデータが完全に削除され、元に戻すことはできません。本当に削除しますか？' }, class: "btn btn-danger", style: "font-weight: bold" %>
+              <%= link_to 'アカウントを削除', admin_user_path, method: :delete, data: { confirm: 'アカウントを削除するとデータが完全に削除され、元に戻すことはできません。本当に削除しますか？' }, class: "btn btn-danger", style: "font-weight: bold" %>
             </span>
           <% end %>
         </div>

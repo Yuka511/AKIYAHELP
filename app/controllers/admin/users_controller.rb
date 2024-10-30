@@ -6,9 +6,9 @@ class Admin::UsersController < ApplicationController
     @posts = @user.posts.order(id: :desc)
   end
 
-  def destoroy
+  def destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to root_path
+    redirect_to admin_path
   end
 end
