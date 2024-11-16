@@ -46,7 +46,9 @@ Rails.application.routes.draw do
     get "", to: "homes#top"
 
     resources :users, only: [:show, :destroy]
-    resources :posts, only: [:show, :index, :destroy]
+    resources :posts, only: [:show, :index, :destroy] do
+      resources :comments, only: [:destroy]
+    end
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
