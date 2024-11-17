@@ -32,7 +32,8 @@
 
 ## 設計書
 
-「後ほど作成予定」
+### AWS構成図
+<https://drive.google.com/file/d/1tP_LdlPNhATnXXt2k8j_YhrVdbKenLqo/view?usp=sharing>
 ​
 ## 開発環境
 - OS：Linux(CentOS)
