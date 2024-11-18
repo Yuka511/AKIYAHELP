@@ -47,13 +47,11 @@ class User < ApplicationRecord
   #プロフィール画像設定
   has_one_attached :profile_image
   def get_profile_image(width, height)
-    if profile_image.attached?
-      # 画像がアップロードされている場合
-      profile_image.variant(resize_to_limit: [width, height]).processed
-    else
-      # 画像がアップロードされていない場合、アセットパイプラインから画像を取得
-      ActionController::Base.helpers.asset_path('no_image.jpg')
+    unless profile_image.attached?
+      file_path = Rails.root.join('app/assets/images/no_image.jpg')
+      profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
+    profile_image.variant(resize_to_limit: [width, height]).processed
   end
   
   #ゲストログイン機能
